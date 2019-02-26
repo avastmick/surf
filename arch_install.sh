@@ -1,23 +1,25 @@
 #!/bin/bash
 ###############################################################################
 # Install script for Arch / Manjaro
+#   CURRENT STATE: Working install, with some gaps wrt Ubuntu. TODO AUR
 ###############################################################################
 
 # Bootstrap install:
-# git clone https://github.com/avastmick/developer-machine.git .my-settings
+# git clone https://github.com/avastmick/dotfiles.git .my-settings
 
 # Install the basics:
 
-sudo pacman -S ansible ccache chromium-browser cmake colordiff curl deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev neovim p7zip-full pandoc pass php powertop python-pip qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget virtualbox virtualbox-ext-pack vivaldi-stable wdiff wget wireguard xclip xsltproc zsh;
+sudo pacman -Syu --noconfirm ansible base-devel ccache chromium clang cmake colordiff curl deluge etcher evolution-ews ctags flatpak neovim p7zip pandoc pass php powertop python-pip tlp tlp-rdw tmux virtualbox wdiff wireguard-tools xclip zsh;
+
 
 ###############################################################################
 # Terminal / Commandline configuration
 ###############################################################################
 # Install ohmyzsh!
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh;
 # Install theme
-git clone https://github.com/avastmick/spaceship-zsh-theme.git "$ZSH_CUSTOM/themes/spaceship-prompt";
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme";
+git clone https://github.com/avastmick/spaceship-zsh-theme.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt";
+ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme";
 # Fonts
 git clone https://github.com/ryanoasis/nerd-fonts.git .fonts --depth=1;
 cd .fonts; 
@@ -64,7 +66,7 @@ cargo install cargo-web;
 # ASDF (languages package manager)
 git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
 # Node JS (stable)
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+# asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
 # asdf install nodejs 10.14.1;
 # asdf global nodejs 10.14.1;
 
@@ -81,8 +83,8 @@ wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_am
 unzip terraform_0.11.10_linux_amd64.zip;
 sudo install terraform /usr/local/bin/;
 rm terraform_0.11.10_linux_amd64.zip;
-# Krypt.co kr
-sh -c "$(curl -fsSL  https://krypt.co/kr/)";
+# Krypt.co kr - need to use the AUR
+# sh -c "$(curl -fsSL  https://krypt.co/kr/)";
 
 ###############################################################################
 # Install settings - profile Vim.init etc.

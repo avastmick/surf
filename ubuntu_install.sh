@@ -38,11 +38,12 @@ sudo apt update && sudo apt upgrade -y;
 # Install stuff
 sudo apt install ansible ccache chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev neovim nnn p7zip-full pandoc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget virtualbox virtualbox-ext-pack vivaldi-stable wdiff wireguard xclip xsltproc zsh -y;
 
+
 ###############################################################################
 # Terminal / Commandline configuration
 ###############################################################################
 # Install ohmyzsh!
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)";
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh;
 # Install theme
 git clone https://github.com/avastmick/spaceship-zsh-theme.git "$ZSH_CUSTOM/themes/spaceship-prompt";
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme";
@@ -103,7 +104,7 @@ sudo apt install lldb-6.0 rust-lldb python-lldb-6.0 liblldb-6.0;
 # ASDF (languages package manager)
 git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
 # Node JS (stable)
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+# asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
 # asdf install nodejs 10.14.1;
 # asdf global nodejs 10.14.1;
 
