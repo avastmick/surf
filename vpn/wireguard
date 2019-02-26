@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Help
+function usage {
+    echo "Usage:"
+    echo "   wireguard [param]"
+    echo "params:"
+    echo "  up - bring the wireguard interface up"
+    echo "  down - brings the wireguard interface down"
+    echo "  --help -h : This message"
+}
+
+if [ -z "$1" ]; then
+    usage;
+    exit;
+fi
+if [[ "$1" == "up" ]]; then
+    sudo wg-quick up wool-birth
+elif [[ "$1" == "down" ]]; then
+    sudo wg-quick down wool-birth
+else
+    usage
+    exit
+fi

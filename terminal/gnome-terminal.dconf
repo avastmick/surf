@@ -1,0 +1,67 @@
+[legacy]
+mnemonics-enabled=true
+menu-accelerator-enabled=false
+schema-version=uint32 3
+default-show-menubar=false
+theme-variant='dark'
+
+[legacy/keybindings]
+toggle-menubar='F10'
+
+[legacy/profiles:/:7480e1e7-f1c3-4ed6-94f7-ab31e7947804]
+foreground-color='#ebebdbdbb2b2'
+visible-name='Vim'
+palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+default-size-columns=150
+default-size-rows=36
+use-system-font=false
+use-theme-colors=false
+font='Fura Mono Nerd Font Regular 13.1'
+bold-color-same-as-fg=true
+bold-color='#a8a899998484'
+background-color='#282828282828'
+scrollbar-policy='never'
+
+[legacy/profiles:/:dd049f60-77f6-486d-8b7f-3e6b90a0252e]
+foreground-color='#ebebdbdbb2b2'
+visible-name='Gruvbox Dark'
+palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+default-size-columns=90
+use-system-font=false
+use-theme-colors=false
+font='Fura Mono Nerd Font Regular 13.1'
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#a8a899998484'
+background-color='#282828282828'
+
+[legacy/profiles:/:dd81d959-5649-4306-8ab9-4c2bcfad062c]
+foreground-color='#ebebdbdbb2b2'
+visible-name='tmux'
+palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+default-size-columns=150
+default-size-rows=36
+use-system-font=false
+use-theme-colors=false
+font='Fura Mono Nerd Font Regular 13.1'
+bold-color-same-as-fg=true
+bold-color='#a8a899998484'
+background-color='#282828282828'
+scrollbar-policy='never'
+
+[legacy/profiles:/:9f19ccf2-44e6-4505-a9aa-a0554c507994]
+foreground-color='#ebebdbdbb2b2'
+visible-name='Gruvbox Dark'
+palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
+default-size-columns=90
+use-system-font=false
+use-theme-colors=false
+font='Fura Mono Nerd Font Regular 13'
+use-theme-background=false
+bold-color-same-as-fg=true
+bold-color='#a8a899998484'
+background-color='#282828282828'
+
+[legacy/profiles:]
+default='9f19ccf2-44e6-4505-a9aa-a0554c507994'
+list=['9f19ccf2-44e6-4505-a9aa-a0554c507994', '7480e1e7-f1c3-4ed6-94f7-ab31e7947804', 'dd81d959-5649-4306-8ab9-4c2bcfad062c']

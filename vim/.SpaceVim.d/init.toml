@@ -1,0 +1,86 @@
+#==============================================================================
+# Personal `SpaceVim` see: (http://spacevim.org) custom (toml) configuration
+# Name: Mick Clarke (avastmick)
+# Date: February 2019
+#==============================================================================
+[[custom_plugins]]
+    name = "junegunn/goyo.vim"
+[[custom_plugins]]
+    name = "cespare/vim-toml"
+[[custom_plugins]]
+    name = "lvht/tagbar-markdown"
+[[custom_plugins]]
+  name = 'mattn/webapi-vim'
+[[custom_plugins]]
+  name = 'prabirshrestha/async.vim'
+[[custom_plugins]]
+  name = 'prabirshrestha/vim-lsp'
+[[custom_plugins]]
+  name = 'prabirshrestha/asyncomplete.vim'
+[[custom_plugins]]
+  name = 'prabirshrestha/asyncomplete-lsp.vim'
+
+# All SpaceVim option below [option] section
+[options]
+    enable_debug = false
+    colorscheme = "gruvbox"
+    background = "dark"
+
+    enable_guicolors = true
+    statusline_separator = "arrow"
+    statusline_inactive_separator = "arrow"
+    enable_tabline_filetype_icon = true
+    # enable_statusline_mode = false
+    # enable_statusline_display_mode = false
+    enable_os_fileformat_icon = true
+
+    # vimfiler options
+    enable_vimfiler_welcome = false
+    enable_vimfiler_gitstatus = true
+    enable_vimfiler_filetypeicon = false
+
+    realtime_leader_guide = true
+    
+    buffer_index_type = true
+    # buffer_index_type = 4
+
+    # Load in the user specific configuration
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
+
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto-completion-return-key-behavior = "complete"
+  auto-completion-tab-key-behavior = "smart"
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
+[[layers]]
+  name = 'tools'
+[[layers]]
+  name = "tags"
+  enable = false
+[[layers]]
+  name = 'tmux'
+[[layers]]
+  name = 'VersionControl'
+[[layers]]
+  name = 'git'
+[[layers]]
+  name = 'lang#rust'
+[[layers]]
+  name = 'lang#go'
+  enable = false
+[[layers]]
+  name = 'lang#javascript'
+  enable = false
+[[layers]]
+  name = 'lang#python'
+  enable = false
+[[layers]]
+  name = 'lang#html'
+  enable = false
+[[layers]]
+  name = 'lang#markdown'
