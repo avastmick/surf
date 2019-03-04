@@ -12,6 +12,10 @@ cp $HOME/.tmux.conf tmux/.tmux.conf
 # Backup vifm conf
 cp -r $HOME/.vifm/. vifm/.
 
+# Back up music config
+cp $HOME/.config/mpd/mpd.conf $HOME/.my-settings/music/mpd/mpd.conf
+cp $HOME/.ncmpcpp/config $HOME/.my-settings/music/ncmpcpp/conf
+
 # Backup old nvim settings
 # cp $HOME/.config/nvim/*.vim ./vim/.config/nvim/
 # Back up `spacevim` custom settings

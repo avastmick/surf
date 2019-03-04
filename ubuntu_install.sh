@@ -36,7 +36,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack vivaldi-stable wdiff wireguard xclip xsltproc zathura zsh -y;
+sudo apt install ansible ccache chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpd ncmpcpp neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack vivaldi-stable wdiff wireguard xclip xsltproc zathura zsh -y;
 
 
 ###############################################################################

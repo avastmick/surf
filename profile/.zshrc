@@ -30,6 +30,7 @@ export TERM="xterm-256color"
 # General aliases
 alias vim='/usr/bin/nvim'
 alias fm='/usr/bin/vifm'
+alias music='/usr/bin/ncmpcpp'
 
 # Set the system editor
 export EDITOR='vim'
