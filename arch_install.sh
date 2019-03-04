@@ -9,7 +9,7 @@
 
 # Install the basics:
 
-sudo pacman -Syu --noconfirm ansible base-devel ccache chromium clang cmake colordiff curl deluge etcher evolution-ews ctags flatpak neovim p7zip pandoc pass php powertop python-pip tlp tlp-rdw tmux virtualbox wdiff wireguard-tools xclip zsh;
+sudo pacman -Syu --noconfirm ansible base-devel ccache chromium clang cmake colordiff curl deluge etcher evolution-ews ctags flatpak neovim p7zip pandoc pandoc-citeproc pass php powertop python-pip snapd texlive-extra texlive-fontsextra tlp tlp-rdw tmux virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zsh;
 
 
 ###############################################################################

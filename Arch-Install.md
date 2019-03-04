@@ -181,8 +181,6 @@ trizen -S nerd-fonts-complete nerd-fonts-complete-mono-glyphs \
   - Run `nvim` accept defaults - need to test whether this is actually needed...
   - `cp ~/.my-settings/vim/.SpaceVim.d/init.vim ~/.SpaceVim.d/`
 - Re-start terminal
-- _NOTE:_ `neovim` needs `xclip` to enable system / host clipboard function
-  - `sudo pacman -S xclip`
 
 ### Code and Languages - do this first __before__ starting `nvim`!
 
@@ -250,8 +248,6 @@ sudo mkinitcpio -p linux
 - VNC client
   - `sudo pacman -S remmina libvncserver avahi-daemon nss-mdns`
   - Configure bonjour/zeroconf: `sudo vim /etc/nsswitch.conf` add `mdns4` to end of `hosts` line
-- Wireguard
-  - `sudo pacman -S wireguard-dkms wireguard-tools`
 - Power tools
   - `sudo pacman -S tlp ethtool smartmontools x86_energy_perf_policy tlp-rdw powertop`
   - Tune:
@@ -301,14 +297,7 @@ Reboot and check
   - `trizen -S kr` - keeps my private keys off my laptop, I know questionable, but usable and easier to setup than yubikey for this purpose
   - `trizen -S signal` - my favourite messenging app on the desktop
   - `trizen -S mailspring` - the only pretty email client on linux, I hate the look and function of Thunderbird
-  - `trizen -S etcher` - my favourite USB writer
   - `trizen -S snapd` - snaps are useful and make install complex apps a breeze with no deps pain, keep cruft levels lower
   - `trizen -S onedrive` - makes accessing work documents etc easier
-  - `sudo pacman -Sy riot-desktop`
-  - `sudo pacman -Sy pandoc texlive-extra texlive-fontsextra`
   - `trizen -S fontawesome.sty` - requires fontawesome 4 installed, see Fonts (above)
-  - `sudo pacman -Sy pygtk deluge`
-  - `sudo pacman -Sy go-ipfs`
-  - `sudo pacman -Sy hugo`
-  - `sudo pacman -Sy asciinema`
 

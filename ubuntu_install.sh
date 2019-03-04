@@ -36,7 +36,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev neovim nnn p7zip-full pandoc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget virtualbox virtualbox-ext-pack vivaldi-stable wdiff wireguard xclip xsltproc zsh -y;
+sudo apt install ansible ccache chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack vivaldi-stable wdiff wireguard xclip xsltproc zathura zsh -y;
 
 
 ###############################################################################
@@ -81,7 +81,8 @@ source $HOME/.cargo/env;
 mkdir ~/.zfunc && rustup completions zsh > ~/.zfunc/_rustup;
 rustup install nightly beta; 
 rustup component add rustfmt-preview rls-preview rust-analysis clippy-preview rust-src;
-rustup target add wasm32-unknown-unknown asmjs-unknown-emscripten;
+# Install WASM targets
+rustup target add wasm32-unknown-unknown asmjs-unknown-emscripten wasm32-unknown-emscripten;
 # Install sccache for caching.
 cargo install sccache;
 # ctag handler for rls
@@ -90,16 +91,30 @@ cargo install rusty-tags;
 cargo +nightly install racer;
 # Security audit - check for vulns
 cargo install cargo-audit;
+# Cargo tree cargo crate deps visualizer
+cargo install cargo-tree;
 # cargo-watch (https://github.com/passcod/cargo-watch) a daemon that checks for changes
 cargo install cargo-watch;
 # Install the Rust web frontend tool
 cargo install cargo-web;
+# cargo generate - for creating a project with a specified template
+cargo install cargo-generate;
 # add diesel cli tools - REQUIRES A DATABASE TO BE INSTALLED
 # e.g. PostgreSQL:
 sudo apt install postgresql postgresql-contrib postgresql-client libpq-dev;
 cargo install diesel_cli --no-default-features --features postgres;
 # Debugging - LLDB
 sudo apt install lldb-6.0 rust-lldb python-lldb-6.0 liblldb-6.0;
+
+# WASM - wasm-pack
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh;
+
+# WASM - emscripten sdk
+curl https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz | tar -zxv -C ~/;
+cd ~/emsdk-portable;
+./emsdk update;
+./emsdk install sdk-incoming-64bit;
+./emsdk activate sdk-incoming-64bit;
 
 # ASDF (languages package manager)
 git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
@@ -108,10 +123,18 @@ git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
 # asdf install nodejs 10.14.1;
 # asdf global nodejs 10.14.1;
 
+# Java SDK - needed for the emscripten sdk
+# asdf plugin-add java;
+# asdf install java openjdk-11.0.1;
+# asdf global java openjdk-11.0.1;
+
 # Yarn (better npm)
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
 sudo sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" >> /etc/apt/sources.list.d/yarn.list';
 sudo apt update && sudo apt install yarn -y;
+
+# Install the JavaScript/Typescript langserver
+npm install -g javascript-typescript-langserver;
 
 ###############################################################################
 # Infrastructure Tools

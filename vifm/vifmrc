@@ -1,0 +1,9 @@
+""==============================================================================
+"" Personal `vifm` custom configuration
+"" Name: Mick Clarke (avastmick)
+"" Date: March 2019
+""==============================================================================
+fileview */ tree %c
+fileview ../ tree %c -L 1
+
+nnoremap w :view<cr>

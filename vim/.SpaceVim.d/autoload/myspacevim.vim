@@ -45,12 +45,19 @@ endfunction
 
 function! myspacevim#after() abort
 
+  " Toggle Zen mode with goyo
+  let g:goyo_width = 120
+  nnoremap [SPC]zz :Goyo<CR>
+
+  " Spell checking
+  " nnoremap [SPC]sp :setlocal spell! spelllang=en_gb<CR>
+
   " Set <Esc> key to :noh to cancel search highlighting
   nnoremap <Esc> :noh<CR><Esc>
 
   " Configure vimfiler
   nnoremap [SPC]<F3> :VimFilerBufferDir<CR>
-  " let g:vimfiler_enable_auto_cd=1
+  let g:vimfiler_enable_auto_cd=1
 
   " folding config {{{
   au FileType rust set foldmethod=syntax
@@ -102,7 +109,7 @@ function! myspacevim#after() abort
 
   " Markdown Settings: {{{
   let g:vmt_auto_update_on_save = 0
-  let g:mkdp_path_to_chrome = "vivaldi"
+  let g:mkdp_path_to_chrome = "surf"
   let g:mkdp_auto_close = 1
   let g:mkdp_refresh_slow = 1
   nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode

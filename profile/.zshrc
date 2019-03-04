@@ -29,7 +29,10 @@ export TERM="xterm-256color"
 
 # General aliases
 alias vim='/usr/bin/nvim'
-alias rgr='/usr/local/bin/ranger'
+alias fm='/usr/bin/vifm'
+
+# Set the system editor
+export EDITOR='vim'
 
 # Add exports
 # Rust
@@ -37,14 +40,13 @@ source $HOME/.cargo/env
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 # export RUSTC_WRAPPER=sccache
 
-# Prettifiers
-export UNCRUSTIFY_CONFIG=$HOME/.uncrustify/avastmick.cfg
-
 # API tokens (local only!)
 
 # Completions
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+# asdf settings for Java
+. $HOME/.asdf/plugins/java/asdf-java-wrapper.zsh
 
 # nnn cd on exit
 export NNN_TMPFILE="/tmp/nnn"
@@ -58,7 +60,5 @@ n()
 }
 
 # Added by Krypton
-export GPG_TTY=$(tty)
 
 # linuxbrew
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

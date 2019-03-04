@@ -61,7 +61,7 @@
   name = 'tools'
 [[layers]]
   name = "tags"
-  enable = false
+  enable = true
 [[layers]]
   name = 'tmux'
 [[layers]]
@@ -84,3 +84,11 @@
   enable = false
 [[layers]]
   name = 'lang#markdown'
+[[layers]]
+  name = "lsp"
+  enable = false
+  filetypes = [
+    "javascript"
+  ]
+  # [layers.override_cmd]
+    # rust = ["rustup", "run", "stable", "rls"]
