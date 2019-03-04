@@ -29,6 +29,12 @@ cp $HOME/.my-settings/tmux/.tmux.conf $HOME/.tmux.conf
 # Copy over .vifm settings
 cp -R $HOME/.my-settings/vifm/. $HOME/.vifm/.
 
+# Restore music player settings
+mkdir $HOME/.config/mpd
+cp $HOME/.my-settings/music/mpd/mpd.conf $HOME/.config/.
+mkdir $HOME/.ncmpcpp
+cp $HOME/.my-settings/music/ncmpcpp/conf $HOME/.ncmpcpp/.
+
 # Restore terminal settings
 # dconf load /com/gexperts/Tilix/ < $HOME/.my-settings/terminal/tilix.dconf
 dconf load /org/gnome/terminal/ < $HOME/.my-settings/terminal/gnome-terminal.dconf
