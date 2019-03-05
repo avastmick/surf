@@ -4,11 +4,11 @@
 # Date: February 2019
 #==============================================================================
 [[custom_plugins]]
-    name = "junegunn/goyo.vim"
+  name = "junegunn/goyo.vim"
 [[custom_plugins]]
-    name = "cespare/vim-toml"
+  name = "cespare/vim-toml"
 [[custom_plugins]]
-    name = "lvht/tagbar-markdown"
+  name = "lvht/tagbar-markdown"
 [[custom_plugins]]
   name = 'mattn/webapi-vim'
 [[custom_plugins]]
@@ -19,12 +19,14 @@
   name = 'prabirshrestha/asyncomplete.vim'
 [[custom_plugins]]
   name = 'prabirshrestha/asyncomplete-lsp.vim'
+[[custom_plugins]]
+  name = "miyakogi/seiya.vim"
 
 # All SpaceVim option below [option] section
 [options]
     enable_debug = false
     colorscheme = "gruvbox"
-    background = "dark"
+    # background = "dark"
 
     enable_guicolors = true
     statusline_separator = "arrow"

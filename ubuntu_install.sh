@@ -21,10 +21,12 @@ sudo add-apt-repository ppa:wireguard/wireguard;
 # wget https://repo.debiancn.org/pool/main/d/debiancn-keyring/debiancn-keyring_0~20161212_all.deb -O /tmp/debiancn-keyring.deb;
 # sudo apt install /tmp/debiancn-keyring.deb;
 # rm /tmp/debiancn-keyring.deb;
-# Vivaldi
-echo "echo deb http://repo.vivaldi.com/stable/deb/ stable main > /etc/apt/sources.list.d/vivaldi.list" | sudo sh;
-curl http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551;
+# Brave browser
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -;
+source /etc/os-release;
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list;
+
+
 # Ansible
 sudo apt-add-repository --yes --update ppa:ansible/ansible;
 # Install NeoVim from ppa as the Debian repo is very old
@@ -36,7 +38,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpd ncmpcpp neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack vivaldi-stable wdiff wireguard xclip xsltproc zathura zsh -y;
+sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpd ncmpcpp neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura zsh -y;
 
 
 ###############################################################################
@@ -164,6 +166,13 @@ sudo dpkg -i draw.io-amd64-9.3.1.deb && rm draw.io-amd64-9.3.1.deb;
 ~/.my-settings/install-settings.sh;
 # Terminal setup - colours!
 wget -O xt https://git.io/v7eBS && chmod +x xt && ./xt && rm xt;
+
+###############################################################################
+## Need to do some rather heavy config to allow mpd etc work
+###############################################################################
+sudo systemctl disable mpd;
+systemctl --user enable mpd;
+
 ###############################################################################
 ## Okay should be done - all you need to do is change the shell to zsh!
 ###############################################################################

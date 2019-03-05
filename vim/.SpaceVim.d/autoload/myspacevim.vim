@@ -10,6 +10,11 @@ function! myspacevim#before() abort
   set titleold="Terminal"
   set titlestring=%F
 
+  " Transparent editing
+  let g:seiya_auto_enable=1
+  " Default value: ['ctermbg']
+  let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+
   " Startify settings
   let g:startify_custom_header = []
   let g:startify_lists = [
