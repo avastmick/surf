@@ -25,7 +25,7 @@ use-theme-transparency=false
 bold-color-same-as-fg=true
 bold-color='#a8a899998484'
 background-color='#282828282828'
-background-transparency-percent=27
+background-transparency-percent=25
 scrollbar-policy='never'
 
 [legacy/profiles:/:dd049f60-77f6-486d-8b7f-3e6b90a0252e]
@@ -40,6 +40,7 @@ use-theme-background=false
 bold-color-same-as-fg=true
 bold-color='#a8a899998484'
 background-color='#282828282828'
+background-transparency-percent=25
 
 [legacy/profiles:/:dd81d959-5649-4306-8ab9-4c2bcfad062c]
 foreground-color='#ebebdbdbb2b2'
@@ -55,7 +56,7 @@ use-theme-transparency=false
 bold-color-same-as-fg=true
 bold-color='#a8a899998484'
 background-color='#282828282828'
-background-transparency-percent=28
+background-transparency-percent=25
 scrollbar-policy='never'
 
 [legacy/profiles:/:9f19ccf2-44e6-4505-a9aa-a0554c507994]
@@ -72,7 +73,7 @@ use-theme-background=false
 bold-color-same-as-fg=true
 bold-color='#a8a899998484'
 background-color='#282828282828'
-background-transparency-percent=29
+background-transparency-percent=25
 
 [legacy/profiles:]
 default='9f19ccf2-44e6-4505-a9aa-a0554c507994'
