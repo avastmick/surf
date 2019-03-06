@@ -26,7 +26,6 @@ curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt
 source /etc/os-release;
 echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list;
 
-
 # Ansible
 sudo apt-add-repository --yes --update ppa:ansible/ansible;
 # Install NeoVim from ppa as the Debian repo is very old
@@ -47,8 +46,8 @@ sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cma
 # Install ohmyzsh!
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh;
 # Install theme
-git clone https://github.com/avastmick/spaceship-zsh-theme.git "$ZSH_CUSTOM/themes/spaceship-prompt";
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme";
+git clone https://github.com/avastmick/spaceship-zsh-theme.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt";
+ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme";
 # Fonts
 git clone https://github.com/ryanoasis/nerd-fonts.git .fonts --depth=1;
 cd .fonts; 

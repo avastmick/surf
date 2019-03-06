@@ -1,16 +1,14 @@
 #!/bin/bash
 ###############################################################################
 # Install script for Arch / Manjaro
-#   CURRENT STATE: Working install, with some gaps wrt Ubuntu. TODO AUR
+#   CURRENT STATE: Working install, with some gaps wrt Ubuntu. 
 ###############################################################################
 
 # Bootstrap install:
 # git clone https://github.com/avastmick/dotfiles.git .my-settings
 
 # Install the basics:
-
-sudo pacman -Syu --noconfirm ansible base-devel ccache chromium clang cmake colordiff curl deluge etcher evolution-ews ctags flatpak neovim p7zip pandoc pandoc-citeproc pass php powertop python-pip snapd texlive-extra texlive-fontsextra tlp tlp-rdw tmux virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zsh;
-
+sudo pacman -Syu --noconfirm ansible avahi base-devel ccache chromium clang cmake colordiff curl deluge docker etcher ctags flatpak mpc mpd ncmpcpp neovim nnn p7zip pandoc pandoc-citeproc pass php postgresql postgresql-client powertop python-pip remmina snapd texlive-extra texlive-fontsextra tlp tlp-rdw tmux vifm virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zathura zsh;
 
 ###############################################################################
 # Terminal / Commandline configuration
@@ -52,16 +50,36 @@ source $HOME/.cargo/env;
 mkdir ~/.zfunc && rustup completions zsh > ~/.zfunc/_rustup;
 rustup install nightly beta; 
 rustup component add rustfmt-preview rls-preview rust-analysis clippy-preview rust-src;
-rustup target add wasm32-unknown-unknown asmjs-unknown-emscripten;
+# Install WASM targets
+rustup target add wasm32-unknown-unknown asmjs-unknown-emscripten wasm32-unknown-emscripten;
 # Install sccache for caching.
 cargo install sccache;
+# ctag handler for rls
+cargo install rusty-tags;
+# racer
 cargo +nightly install racer;
 # Security audit - check for vulns
 cargo install cargo-audit;
+# Cargo tree cargo crate deps visualizer
+cargo install cargo-tree;
 # cargo-watch (https://github.com/passcod/cargo-watch) a daemon that checks for changes
 cargo install cargo-watch;
 # Install the Rust web frontend tool
 cargo install cargo-web;
+# cargo generate - for creating a project with a specified template
+cargo install cargo-generate;
+# add diesel cli tools - REQUIRES A DATABASE TO BE INSTALLED
+cargo install diesel_cli --no-default-features --features postgres;
+
+# WASM - wasm-pack
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh;
+
+# WASM - emscripten sdk
+curl https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz | tar -zxv -C ~/;
+cd ~/emsdk-portable;
+./emsdk update;
+./emsdk install sdk-incoming-64bit;
+./emsdk activate sdk-incoming-64bit;
 
 # ASDF (languages package manager)
 git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
@@ -74,8 +92,7 @@ git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
 # Infrastructure Tools
 ###############################################################################
 
-# Docker
-sh -c "$(curl -fsSL https://get.docker.com/)";
+# Docker user to group
 sudo usermod -aG docker avastmick;
 
 # Terraform
@@ -83,8 +100,18 @@ wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_am
 unzip terraform_0.11.10_linux_amd64.zip;
 sudo install terraform /usr/local/bin/;
 rm terraform_0.11.10_linux_amd64.zip;
+
+###############################################################################
+# AUR - tools and add-ons - after Rust installation due to deps
+#   Note: doing last as this is NOT unattended.
+#
+# VPN - wireguard plugin for Gnome networkmanager
+# Socks5 - Shadowsocks QT5 client
 # Krypt.co kr - need to use the AUR
-# sh -c "$(curl -fsSL  https://krypt.co/kr/)";
+# Signal messenger
+# Zoom
+###############################################################################
+yay -S --no-confirm kr networkmanager-wireguard-git shadowsocks-qt5-git signal zoom;
 
 ###############################################################################
 # Install settings - profile Vim.init etc.
