@@ -32,8 +32,8 @@ wget -O xt https://git.io/v7eBS && chmod +x xt && ./xt && rm xt;
 # Editor - Vim (NeoVim), of course
 ###############################################################################
 # Python pip and the Neovim package
-pip install --upgrade pip;
-pip install --user py flake8 yapf autoflake isort jedi tox neovim;
+sudo pip install --upgrade pip;
+sudo pip install --user py flake8 yapf autoflake isort jedi tox neovim;
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim;
 
