@@ -8,7 +8,7 @@
 # git clone https://github.com/avastmick/dotfiles.git .my-settings
 
 # Install the basics:
-sudo pacman -Syu --noconfirm ansible avahi base-devel ccache chromium clang cmake colordiff curl deluge docker etcher ctags flatpak mpc mpd ncmpcpp neovim nnn p7zip pandoc pandoc-citeproc pass php postgresql postgresql-client powertop python-pip remmina snapd texlive-extra texlive-fontsextra tlp tlp-rdw tmux vifm virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zathura zsh;
+sudo pacman -Syu --noconfirm ansible avahi base-devel ccache chromium clang cmake colordiff curl deluge docker etcher ctags flatpak mpc mpd ncmpcpp neovim nnn p7zip pandoc pandoc-citeproc pass php postgresql postgresql-client powertop python-pip remmina snapd texlive-most texlive-fontsextra tlp tlp-rdw tmux vifm virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zathura zsh;
 
 ###############################################################################
 # Terminal / Commandline configuration
@@ -32,8 +32,8 @@ wget -O xt https://git.io/v7eBS && chmod +x xt && ./xt && rm xt;
 # Editor - Vim (NeoVim), of course
 ###############################################################################
 # Python pip and the Neovim package
-sudo pip install --upgrade pip;
-sudo pip install --user py flake8 yapf autoflake isort jedi tox neovim;
+pip install --upgrade pip;
+pip install --user py flake8 yapf autoflake isort jedi tox neovim;
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim;
 
