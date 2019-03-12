@@ -31,6 +31,7 @@ export TERM="xterm-256color"
 alias vim='/usr/bin/nvim'
 alias fm='/usr/bin/vifm'
 alias music='/usr/bin/ncmpcpp'
+alias signal='$HOME/.my-settings/people/signal/scli/scli'
 
 # Set the system editor
 export EDITOR='vim'
@@ -51,6 +52,7 @@ export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
 # nnn cd on exit
 export NNN_TMPFILE="/tmp/nnn"
+export NNN_COPIER='$HOME/.my-settings/scripts/nnn-copy.sh'
 n()
 {
         nnn "$@"

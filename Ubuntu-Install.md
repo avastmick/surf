@@ -17,8 +17,8 @@ The following may be installed afterwards.
     - Shortcut: `Ctrl` + `Alt` + `T`
 
 - Gnome Extensions - [https://extensions.gnome.org/](https://extensions.gnome.org/)
-  - gnome-shell-extension-cpu-power-manager
-  - https://extensions.gnome.org/extension/484/workspace-grid/
+  - https://extensions.gnome.org/extension/545/hide-top-bar/
+  - https://extensions.gnome.org/extension/1267/no-title-bar/
   - https://extensions.gnome.org/extension/310/alt-tab-workspace/
   - https://extensions.gnome.org/extension/615/appindicator-support/
   - https://extensions.gnome.org/extension/1060/timezone/

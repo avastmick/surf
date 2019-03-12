@@ -8,7 +8,7 @@
 # git clone https://github.com/avastmick/dotfiles.git .my-settings
 
 # Install the basics:
-sudo pacman -Syu --noconfirm ansible avahi base-devel ccache chromium clang cmake colordiff curl deluge docker etcher ctags flatpak mpc mpd ncmpcpp neovim nnn p7zip pandoc pandoc-citeproc pass php postgresql postgresql-client powertop python-pip remmina snapd texlive-most texlive-fontsextra tlp tlp-rdw tmux vifm virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zathura zsh;
+sudo pacman -Syu --noconfirm ansible avahi base-devel ccache chromium clang cmake colordiff curl deluge docker etcher ctags flatpak mpc mpd ncmpcpp neovim nnn p7zip pandoc pandoc-citeproc pass php postgresql postgresql-client powertop python-pip remmina snapd terraform texlive-most texlive-fontsextra tlp tlp-rdw tmux vifm virtualbox wdiff wireguard-dkms wireguard-tools xclip yay zathura zsh;
 
 ###############################################################################
 # Terminal / Commandline configuration
@@ -95,12 +95,6 @@ git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
 # Docker user to group
 sudo usermod -aG docker avastmick;
 
-# Terraform
-wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip;
-unzip terraform_0.11.10_linux_amd64.zip;
-sudo install terraform /usr/local/bin/;
-rm terraform_0.11.10_linux_amd64.zip;
-
 ###############################################################################
 # AUR - tools and add-ons - after Rust installation due to deps
 #   Note: doing last as this is NOT unattended.
@@ -111,7 +105,7 @@ rm terraform_0.11.10_linux_amd64.zip;
 # Signal messenger
 # Zoom
 ###############################################################################
-yay -S --no-confirm kr networkmanager-wireguard-git shadowsocks-qt5-git signal zoom;
+yay -S kr networkmanager-wireguard-git shadowsocks-qt5-git signal zoom;
 
 ###############################################################################
 # Install settings - profile Vim.init etc.

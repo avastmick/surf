@@ -4,7 +4,6 @@
 "" Date: February 2019
 ""==============================================================================
 function! myspacevim#before() abort
-
   " Set the terminal title
   set title
   set titleold="Terminal"
@@ -52,6 +51,7 @@ function! myspacevim#after() abort
 
   " Toggle Zen mode with goyo
   let g:goyo_width = 120
+  let g:goyo_height = 100
   nnoremap [SPC]zz :Goyo<CR>
 
   " Spell checking
@@ -108,7 +108,7 @@ function! myspacevim#after() abort
   let g:asyncomplete_remove_duplicates = 1
   " The following don't appear to function, though LSP errors do appear
   let g:lsp_diagnostics_enabled = 1
-  let g:lsp_signs_enabled = 1           " enable signs
+  let g:lsp_signs_enabled = 1
   let g:lsp_signs_error = {'text': '✗'}
   " }}}
 

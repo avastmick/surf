@@ -1,6 +1,9 @@
 #!/bin/bash
 ###############################################################################
 # Install script for Ubuntu
+#   TODO - idempotence
+#        - backup and import keyboard bindings
+#        - install st terminal (own config)
 ###############################################################################
 
 # Bootstrap install:
@@ -37,7 +40,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpd ncmpcpp neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python-pip python-pip3 qemu-user-static signal-desktop texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura zsh -y;
+sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpa mpd mplayer mpv ncmpcpp neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura zsh -y;
 
 
 ###############################################################################
@@ -46,23 +49,22 @@ sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cma
 # Install ohmyzsh!
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh;
 # Install theme
-git clone https://github.com/avastmick/spaceship-zsh-theme.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt";
+git clone https://github.com/avastmick/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt";
 ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme";
 # Fonts
 git clone https://github.com/ryanoasis/nerd-fonts.git .fonts --depth=1;
 cd .fonts; 
 ./install.sh FiraMono;
 cd ~;
-# There is an issue here that the gnone-terminal filters on mono-spaced fonts
-#   and the nerd font is not shown... do this via the dconf import
+
+# Configure git to print pretty git log trees
+git config --global alias.lg "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
 
 ###############################################################################
 # Editor - Vim (NeoVim), of course
 ###############################################################################
 # Python pip and the Neovim package
-python -m pip install --upgrade pip;
 python3 -m pip install --upgrade pip;
-python -m pip install neovim;
 python3 -m pip install neovim;
 # Install spacevim
 curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim;

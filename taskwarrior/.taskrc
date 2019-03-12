@@ -1,0 +1,51 @@
+###############################################################################
+#
+# task configuration
+# author: Mick Clarke 2018/19
+#
+###############################################################################
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+#include /usr/share/taskwarrior/light-16.theme
+#include /usr/share/taskwarrior/light-256.theme
+#include /usr/share/taskwarrior/dark-16.theme
+#include /usr/share/taskwarrior/dark-256.theme
+#include /usr/share/taskwarrior/dark-red-256.theme
+#include /usr/share/taskwarrior/dark-green-256.theme
+#include /usr/share/taskwarrior/dark-blue-256.theme
+#include /usr/share/taskwarrior/dark-violets-256.theme
+include /usr/share/taskwarrior/dark-yellow-green.theme
+#include /usr/share/taskwarrior/dark-gray-256.theme
+#include /usr/share/taskwarrior/dark-gray-blue-256.theme
+#include /usr/share/taskwarrior/solarized-dark-256.theme
+#include /usr/share/taskwarrior/solarized-light-256.theme
+#include /usr/share/taskwarrior/no-color.theme
+
+# freecinc taskd server sync settings.
+taskd.server=freecinc.com:53589
+taskd.key=\/home\/avastmick\/.task\/freecinc_2f5fa224.key.pem
+taskd.certificate=\/home\/avastmick\/.task\/freecinc_2f5fa224.cert.pem
+taskd.ca=\/home\/avastmick\/.task\/freecinc_2f5fa224.ca.pem
+taskd.credentials=FreeCinc\/freecinc_2f5fa224\/22348017-753a-4cee-b9db-30eb0b0ebfe5
+
+# Mobile settings (Android)
+# Current UID: 1bfcaacf-8cbd-4dfb-8995-2d681353f9be
+# taskd.server=freecinc.com:53589
+# taskd.key=/storage/emulated/0/Android/data/kvj.taskw/files/1bfcaacf-8cbd-4dfb-8995-2d681353f9be/freecinc_2f5fa224.key.pem
+# taskd.certificate=/storage/emulated/0/Android/data/kvj.taskw/files/1bfcaacf-8cbd-4dfb-8995-2d681353f9be/freecinc_2f5fa224.cert.pem
+# taskd.ca=/storage/emulated/0/Android/data/kvj.taskw/files/1bfcaacf-8cbd-4dfb-8995-2d681353f9be/freecinc_2f5fa224.ca.pem
+# taskd.credentials=FreeCinc/freecinc_2f5fa224/22348017-753a-4cee-b9db-30eb0b0ebfe5
+
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )

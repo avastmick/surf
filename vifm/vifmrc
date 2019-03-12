@@ -6,4 +6,21 @@
 fileview */ tree %c
 fileview ../ tree %c -L 1
 
+" sets q to quit
+nnoremap q :quit<cr>
+
+" sets the right-hand pane to display mode
 nnoremap w :view<cr>
+
+" yank current directory path into the clipboard
+nnoremap yd :!echo -n %d | xclip %i<cr>
+
+" yank current file path into the clipboard
+nnoremap yf :!echo -n %c:p | xclip %i<cr>
+
+" yank current filename without path into the clipboard
+nnoremap yn :!echo -n %c | xclip %i<cr>
+
+" yank root of current file's name into the clipboard
+nnoremap yr :!echo -n %c:r | xclip %i<cr>
+
