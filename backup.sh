@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Backup .zshrc file
-cp $HOME/.zshrc profile/.zshrc
+# Backup .bashrc file
+cp $HOME/.bashrc profile/.bashrc
+cp $HOME/.bash_aliases profile/.bash_aliases
 # Remove sensitive lines
 # ANY line that follows the comment SENSITIVE
-sed -i '/SENSITIVE/d' profile/.zshrc
+sed -i '/SENSITIVE/d' profile/.bashrc
 
 # Backup tmux
 cp $HOME/.tmux.conf tmux/.tmux.conf

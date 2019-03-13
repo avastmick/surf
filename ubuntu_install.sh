@@ -40,17 +40,16 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpa mpd mplayer mpv ncmpcpp neovim nnn p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura zsh -y;
+sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpa mpd most mplayer mpv ncmpcpp neovim p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura -y;
+
+# The following need to be installed manually as the Debian / Ubuntu archives are too old...
+# 1. nnn
 
 
 ###############################################################################
 # Terminal / Commandline configuration
 ###############################################################################
-# Install ohmyzsh!
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh;
-# Install theme
-git clone https://github.com/avastmick/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt";
-ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme";
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 # Fonts
 git clone https://github.com/ryanoasis/nerd-fonts.git .fonts --depth=1;
 cd .fonts; 
@@ -81,7 +80,7 @@ sudo snap install universal-ctags;
 # Install Rust via rustup.rs
 curl https://sh.rustup.rs -sSf | sh -s -- -y;
 source $HOME/.cargo/env;
-mkdir ~/.zfunc && rustup completions zsh > ~/.zfunc/_rustup;
+rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
 rustup install nightly beta; 
 rustup component add rustfmt-preview rls-preview rust-analysis clippy-preview rust-src;
 # Install WASM targets
@@ -175,7 +174,6 @@ sudo systemctl disable mpd;
 systemctl --user enable mpd;
 
 ###############################################################################
-## Okay should be done - all you need to do is change the shell to zsh!
+## Okay should be done - all you need to do is reload your ~/.bashrc
 ###############################################################################
-echo "Now change your shell to zsh, and then logout and in again for the config to be loaded.";
-chsh -s /bin/zsh;
+. ~/.bashrc;
