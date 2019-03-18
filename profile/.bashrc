@@ -6,7 +6,6 @@
 ###############################################################################
 # general settings
 ###############################################################################
-stty -ixon # Disable ctrl-s and ctrl-q.
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 HISTSIZE= HISTFILESIZE= # Infinite history.
 # Set the system editor
@@ -16,7 +15,7 @@ export TERM="xterm-256color"
 # make sure man is pretty and readable
 export PAGER="/usr/bin/most -s"
 
-# TODO Configure the prompt.
+# Configure the prompt.
 # Goal: simple, so:
 #   dir_name [optional] git branch [optional] language symbol version
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -35,10 +34,13 @@ source ~/.bash-git-prompt/gitprompt.sh
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\eOA": history-search-backward'
-bind '"\eOB": history-search-forward'
+# FIXME this throws an error at login...
+if [[ "$-" =~ "i" ]]; then
+  bind '"\e[A": history-search-backward'
+  bind '"\e[B": history-search-forward'
+  bind '"\eOA": history-search-backward'
+  bind '"\eOB": history-search-forward'
+fi
 
 ###############################################################################
 # File manager configuration - `nnn`
@@ -51,8 +53,8 @@ n()
 {
    nnn "$@"
    if [ -f $NNN_TMPFILE ]; then
-           . $NNN_TMPFILE
-           rm $NNN_TMPFILE
+     . $NNN_TMPFILE
+     rm $NNN_TMPFILE
    fi
 }
 

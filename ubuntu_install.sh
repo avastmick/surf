@@ -5,7 +5,6 @@
 #        - backup and import keyboard bindings
 #        - install st terminal (own config)
 ###############################################################################
-
 # Bootstrap install:
 # git clone https://github.com/avastmick/developer-machine.git .my-settings
 
@@ -19,7 +18,8 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61 && sudo sh -c "echo 'deb https://dl.bintray.com/resin-io/debian stable etcher' > /etc/apt/sources.list.d/resin-io-etcher.list";
 # Wireguard
 sudo add-apt-repository ppa:wireguard/wireguard;
-# Shadowsocks (doesn't work)
+# FIXME Shadowsocks (doesn't work)
+# Build from source?
 # echo "deb https://repo.debiancn.org/ testing main" | sudo tee /etc/apt/sources.list.d/debiancn.list;
 # wget https://repo.debiancn.org/pool/main/d/debiancn-keyring/debiancn-keyring_0~20161212_all.deb -O /tmp/debiancn-keyring.deb;
 # sudo apt install /tmp/debiancn-keyring.deb;
@@ -44,17 +44,26 @@ sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cma
 
 # The following need to be installed manually as the Debian / Ubuntu archives are too old...
 # 1. nnn
-
+curl -O https://github.com/jarun/nnn/releases/download/v2.3/nnn_2.3-1_ubuntu18.04.amd64.deb;
+sudo dpkg -i nnn_2.3-1_ubuntu18.04.amd64.deb;
+rm nnn_2.3-1_ubuntu18.04.amd64.deb; 
 
 ###############################################################################
 # Terminal / Commandline configuration
 ###############################################################################
-git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-# Fonts
+# Fonts - do first as the st-terminal requires it on compile
 git clone https://github.com/ryanoasis/nerd-fonts.git .fonts --depth=1;
 cd .fonts; 
 ./install.sh FiraMono;
 cd ~;
+# suckless st
+mkdir $HOME/.my-settings/build-area;
+git clone https://github.com/avastmick/st.git $HOME/.my-settings/build-area/st-term;
+cd $HOME/.my-settings/build-area/st-term && sudo make install;
+git remote set-url origin git@github.com:avastmick/st.git;
+cd $HOME;
+# Add in a prompt to show git status etc.
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
 # Configure git to print pretty git log trees
 git config --global alias.lg "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
@@ -75,12 +84,10 @@ curl -sLf https://spacevim.org/install.sh | bash -s -- --install neovim;
 #     - JavaScript
 ###############################################################################
 
-sudo snap install universal-ctags;
-
 # Install Rust via rustup.rs
 curl https://sh.rustup.rs -sSf | sh -s -- -y;
 source $HOME/.cargo/env;
-rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
+rustup completions bash >> $HOME/.bash_completion;
 rustup install nightly beta; 
 rustup component add rustfmt-preview rls-preview rust-analysis clippy-preview rust-src;
 # Install WASM targets
@@ -111,24 +118,25 @@ sudo apt install lldb-6.0 rust-lldb python-lldb-6.0 liblldb-6.0;
 # WASM - wasm-pack
 curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh;
 
-# WASM - emscripten sdk
-curl https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz | tar -zxv -C ~/;
-cd ~/emsdk-portable;
-./emsdk update;
-./emsdk install sdk-incoming-64bit;
-./emsdk activate sdk-incoming-64bit;
+# WASM - emscripten sdk - OFF for now
+# curl https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz | tar -zxv -C ~/;
+# cd ~/emsdk-portable;
+# ./emsdk update;
+# ./emsdk install sdk-incoming-64bit;
+# ./emsdk activate sdk-incoming-64bit;
 
 # ASDF (languages package manager)
 git clone --branch v0.5.1 https://github.com/asdf-vm/asdf.git ~/.asdf;
+. $HOME/.asdf/asdf.sh
 # Node JS (stable)
-# asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-# asdf install nodejs 10.14.1;
-# asdf global nodejs 10.14.1;
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+asdf install nodejs 10.14.1;
+asdf global nodejs 10.14.1;
 
 # Java SDK - needed for the emscripten sdk
-# asdf plugin-add java;
-# asdf install java openjdk-11.0.1;
-# asdf global java openjdk-11.0.1;
+asdf plugin-add java;
+asdf install java openjdk-11.0.1;
+asdf global java openjdk-11.0.1;
 
 # Yarn (better npm)
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
@@ -156,9 +164,6 @@ curl -O https://prerelease.keybase.io/keybase_amd64.deb;
 sudo dpkg -i keybase_amd64.deb && sudo apt-get install -f && rm keybase_amd64.deb && run_keybase;
 # Krypt.co kr
 sh -c "$(curl -fsSL  https://krypt.co/kr/)";
-# Draw.io
-curl -O https://github.com/jgraph/drawio-desktop/releases/download/v9.3.1/draw.io-amd64-9.3.1.deb;
-sudo dpkg -i draw.io-amd64-9.3.1.deb && rm draw.io-amd64-9.3.1.deb;
 
 ###############################################################################
 # Install settings - profile Vim.init etc.
@@ -177,3 +182,4 @@ systemctl --user enable mpd;
 ## Okay should be done - all you need to do is reload your ~/.bashrc
 ###############################################################################
 . ~/.bashrc;
+echo "Should be done. Probably worth logging out and in again."

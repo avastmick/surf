@@ -3,11 +3,21 @@
 "" Name: Mick Clarke (avastmick)
 "" Date: February 2019
 ""==============================================================================
+"" this is run BEFORE the layers loading of spacevim
 function! myspacevim#before() abort
   " Set the terminal title
   set title
   set titleold="Terminal"
   set titlestring=%F
+
+  " Set the mouse to be only in normal mode!
+  set mouse=n
+  " Set soft wrap
+  set wrap
+  "" Copy/Paste/Cut
+  if has('unnamedplus')
+    set clipboard=unnamed,unnamedplus
+  endif
 
   " Transparent editing
   let g:seiya_auto_enable=1
@@ -23,18 +33,6 @@ function! myspacevim#before() abort
   \ { 'type': 'commands',  'header': [ 'Commands' ]  },
   \ ]
 
-  " Set the mouse to be only in normal mode!
-  set mouse=n
-
-  " Set soft wrap
-  set wrap
-
-  "" Copy/Paste/Cut
-  if has('unnamedplus')
-    set clipboard=unnamed,unnamedplus
-  endif
-
-  " No love for <Esc>
   " Set <Alt> mappings for INSERT mode.
   "  Lots of Neovim incompatability issues
   set winaltkeys=no
@@ -47,6 +45,7 @@ function! myspacevim#before() abort
 
 endfunction
 
+"" This is run AFTER the layers loading of SpaceVim
 function! myspacevim#after() abort
 
   " Toggle Zen mode with goyo
@@ -79,48 +78,44 @@ function! myspacevim#after() abort
   nnoremap [SPC]sq :SClose<CR>
   " }}}
 
-  " Setup a TODO lookup handler
+  " Setup a "TODO" lookup handler
   noremap [SPC]td :noautocmd vimgrep /TODO/j **/*<CR>:cw<CR>
-  " Setup a FIXME lookup handler
+  " Setup a "FIXME" lookup handler
   noremap [SPC]fm :noautocmd vimgrep /FIXME/j **/*<CR>:cw<CR>
   " Sort words alphabetically on a line
   noremap [SPC]sal :call setline('.', join(sort(split(getline('.'), ' ')), " "))<CR>
 
   " Rust Settings: {{{
-  let g:rustfmt_autosave = 1
-  " vim-racer DISABLED
-  " set hidden
-  " let g:racer_cmd =expand('$HOME/.cargo/bin/racer')
-  let $RUST_SRC_PATH=substitute(system('rustc --print sysroot'), '\n\+$', '', '') . '/lib/rustlib/src/rust/src'
-  " keymapping definitions
-  au FileType rust nmap gd <Plug>(rust-def)
-  au FileType rust nmap gs <Plug>(rust-def-split)
-  au FileType rust nmap gx <Plug>(rust-def-vertical)
-  au FileType rust nmap <leader>gd <Plug>(rust-doc)
-  " RLS config
-  if executable('rls')
+    "   TODO:
+    "   What I want to do:
+    "   - have the same experience as in VSCode
+    "   - Not have duplications or spotty autocompletes that lead to overwork
+    set hidden
+    let g:racer_experimental_completer = 0
+    let g:rustfmt_autosave = 1
+    " keymapping definitions
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
+    " RLS config
+    if executable('rls')
       au User lsp_setup call lsp#register_server({
-          \ 'name': 'rls',
-          \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-          \ 'whitelist': ['rust'],
-          \ })
-  endif
-  let g:asyncomplete_remove_duplicates = 1
-  " The following don't appear to function, though LSP errors do appear
-  let g:lsp_diagnostics_enabled = 1
-  let g:lsp_signs_enabled = 1
-  let g:lsp_signs_error = {'text': '✗'}
-  " }}}
-
-  " Markdown Settings: {{{
-  let g:vmt_auto_update_on_save = 0
-  let g:mkdp_path_to_chrome = "surf"
-  let g:mkdp_auto_close = 1
-  let g:mkdp_refresh_slow = 1
-  nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
-  imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
-  nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
-  imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+    endif
+    let g:asyncomplete_remove_duplicates = 1
+    " The following don't appear to function, though LSP errors do appear
+    let g:lsp_diagnostics_echo_cursor = 1
+    let g:lsp_signs_enabled = 0
+    let g:lsp_signs_error = {'text': '✗'}
   " }}}
  
+  " Markdown Settings: {{{
+    " TODO the following doesn't work and opens (always) in Firefox
+    let g:mkdp_browser = '/usr/bin/surf'
+  " }}}
+
 endfunction

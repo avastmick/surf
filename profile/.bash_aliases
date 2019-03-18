@@ -5,6 +5,7 @@
 #
 ###############################################################################
 # General aliases 
+###############################################################################
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias fm='/usr/bin/vifm'
@@ -14,7 +15,7 @@ alias l='ls -CF'
 alias ll='ls -alF'
 alias ls='ls -hN --color=auto --group-directories-first'
 alias music='/usr/bin/ncmpcpp'
-alias signal='$HOME/.my-settings/people/signal/scli/scli'
+alias signal='$HOME/.my-settings/build-area/scli/scli'
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
@@ -54,7 +55,7 @@ alias gca!='git commit -v -a --amend'
 alias gcan!='git commit -v -a --no-edit --amend'
 alias gcans!='git commit -v -a -s --no-edit --amend'
 alias gcam='git commit -a -m'
-alias gcsm='git commit -s -m'
+alias gcsm='git commit -S -am'
 alias gcb='git checkout -b'
 alias gcf='git config --list'
 alias gcl='git clone --recurse-submodules'
