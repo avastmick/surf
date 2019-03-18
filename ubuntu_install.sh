@@ -56,11 +56,18 @@ git clone https://github.com/ryanoasis/nerd-fonts.git .fonts --depth=1;
 cd .fonts; 
 ./install.sh FiraMono;
 cd ~;
-# suckless st
+# suckless tools
 mkdir $HOME/.my-settings/build-area;
+# suckless st
 git clone https://github.com/avastmick/st.git $HOME/.my-settings/build-area/st-term;
 cd $HOME/.my-settings/build-area/st-term && sudo make install;
-git remote set-url origin git@github.com:avastmick/st.git;
+git remote git remote add upstream https://git.suckless.org/st;
+# suckless surf - TODO this does not compile at this point
+# sudo apt install webkit2gtk-4.0 gtk-3.0
+# git clone https://github.com/avastmick/surf.git $HOME/.my-settings/build-area/surf-browser;
+# cd $HOME/.my-settings/build-area/surf-browser && sudo make install;
+# git remote git remote add upstream https://git.suckless.org/surf;
+# Return to ~
 cd $HOME;
 # Add in a prompt to show git status etc.
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
