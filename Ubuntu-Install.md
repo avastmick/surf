@@ -37,3 +37,16 @@ flatpak update;
 flatpak install nuvola eu.tiliado.Nuvola;
 flatpak install nuvola eu.tiliado.NuvolaApp8tracks;
 ```
+
+## Docker management
+
+Docker can run down your battery, so I don't have it always running:
+
+- `sudo systemctl stop docker containerd`
+- `sudo systemctl disable docker`
+- `sudo ip link del dev docker0 2>/dev/null || true`
+
+To start again:
+
+- `sudo systemctl start docker containerd`
+

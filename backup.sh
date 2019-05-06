@@ -9,6 +9,7 @@ sed -i '/SENSITIVE/d' profile/.bashrc
 
 # Backup tmux
 cp $HOME/.tmux.conf tmux/.tmux.conf
+cp $HOME/.tmux/std.conf tmux/std.conf
 
 # Backup vifm conf
 cp -r $HOME/.vifm/. vifm/.

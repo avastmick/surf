@@ -11,23 +11,20 @@
 ###############################################################################
 # PPA and external sources
 ###############################################################################
-# Signal
-curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+LAST_LTS = "bionic"
+source /etc/os-release;
+# Signal - Note: the repository is still set to xenial (16.04 LTS)
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -;
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list;
 # Etcher
 sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61 && sudo sh -c "echo 'deb https://dl.bintray.com/resin-io/debian stable etcher' > /etc/apt/sources.list.d/resin-io-etcher.list";
 # Wireguard
 sudo add-apt-repository ppa:wireguard/wireguard;
-# FIXME Shadowsocks (doesn't work)
-# Build from source?
-# echo "deb https://repo.debiancn.org/ testing main" | sudo tee /etc/apt/sources.list.d/debiancn.list;
-# wget https://repo.debiancn.org/pool/main/d/debiancn-keyring/debiancn-keyring_0~20161212_all.deb -O /tmp/debiancn-keyring.deb;
-# sudo apt install /tmp/debiancn-keyring.deb;
-# rm /tmp/debiancn-keyring.deb;
+# FIXME Shadowsocks 
+# sudo apt install libqrencode libappindicator1 libqtshadowsocks libzbar qtbase5;
 # Brave browser
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -;
-source /etc/os-release;
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list;
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ ${UBUNTU_CODENAME} main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list;
 
 # Ansible
 sudo apt-add-repository --yes --update ppa:ansible/ansible;
@@ -40,13 +37,13 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak libssl-dev mpc mpa mpd most mplayer mpv ncmpcpp neovim p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura -y;
+sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak jq libssl-dev mpc mpa mpd most mplayer mpv ncmpcpp neovim p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura -y;
 
 # The following need to be installed manually as the Debian / Ubuntu archives are too old...
-# 1. nnn
-curl -O https://github.com/jarun/nnn/releases/download/v2.3/nnn_2.3-1_ubuntu18.04.amd64.deb;
-sudo dpkg -i nnn_2.3-1_ubuntu18.04.amd64.deb;
-rm nnn_2.3-1_ubuntu18.04.amd64.deb; 
+# 1. nnn - Note: only installing Ubuntu 18.04 right now
+curl -s https://api.github.com/repos/jarun/nnn/releases/latest | jq -r ".assets[] | select(.name | test(\"ubuntu18\")) | .browser_download_url" | wget -qi - ;
+sudo dpkg -i nnn*.deb;
+rm nnn*.deb; 
 
 ###############################################################################
 # Terminal / Commandline configuration
@@ -74,6 +71,10 @@ git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt -
 
 # Configure git to print pretty git log trees
 git config --global alias.lg "log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+
+# Add in tmux session management - https://github.com/jamesottaway/tmux-up
+sudo curl -L https://git.io/tmux-up -o /usr/local/bin/tmux-up;
+sudo chmod u+x /usr/local/bin/tmux-up;
 
 ###############################################################################
 # Editor - Vim (NeoVim), of course

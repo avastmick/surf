@@ -2,7 +2,7 @@
 
 # Restore `.bashrc`
 cp $HOME/.my-settings/profile/.bashrc $HOME/.bashrc
-cp $HOME/.my-settings/profile/.bash_aliases $HOME/..bash_aliases
+cp $HOME/.my-settings/profile/.bash_aliases $HOME/.bash_aliases
 
 # Add the Vim init.vim to Spacevim
 # A hacky fix - sometime the SpaceVim install doesn't create a config dir, but leaves a file.
@@ -26,6 +26,7 @@ fi
 
 # Copy over .tmux.conf
 cp $HOME/.my-settings/tmux/.tmux.conf $HOME/.tmux.conf
+cp $HOME/.my-settings/tmux/std.conf $HOME/.tmux/std.conf
 
 # Copy over .vifm settings
 mkdir $HOME/.vifm;
