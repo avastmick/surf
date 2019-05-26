@@ -37,13 +37,17 @@ sudo add-apt-repository ppa:neovim-ppa/stable;
 sudo apt update && sudo apt upgrade -y;
 
 # Install stuff
-sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags flatpak gnome-software-plugin-flatpak jq libssl-dev mpc mpa mpd most mplayer mpv ncmpcpp neovim p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura -y;
+sudo apt install ansible ccache brave-browser brave-keyring chromium-browser cmake colordiff deluge etcher-electron evolution-ews exuberant-ctags ffmpeg flatpak gnome-software-plugin-flatpak jq libssl-dev mpc mpa mpd most mplayer mpv newsboat ncmpcpp neovim p7zip-full pandoc pandoc-citeproc pass php powertop python3-pip qemu-user-static signal-desktop taskwarrior texlive texlive-fonts-extra texlive-xetex tlp tlp-rdw tmux uget vifm virtualbox virtualbox-ext-pack wdiff wireguard xclip xsltproc zathura -y;
 
 # The following need to be installed manually as the Debian / Ubuntu archives are too old...
 # 1. nnn - Note: only installing Ubuntu 18.04 right now
 curl -s https://api.github.com/repos/jarun/nnn/releases/latest | jq -r ".assets[] | select(.name | test(\"ubuntu18\")) | .browser_download_url" | wget -qi - ;
 sudo dpkg -i nnn*.deb;
 rm nnn*.deb; 
+# youtube-dl - Note: this may be already installed under Pop!OS.
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl;
+sudo chmod a+rx /usr/local/bin/youtube-dl;
+
 
 ###############################################################################
 # Terminal / Commandline configuration
