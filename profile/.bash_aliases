@@ -19,6 +19,13 @@ alias signal='$HOME/.my-settings/build-area/scli/scli'
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
+# Simple docker controller - saves battery, so docker daemon only when I'm using it
+alias docker-on='sudo systemctl start docker containerd'
+alias docker-off='sudo systemctl stop docker containerd && sudo ip link del dev docker0 2>/dev/null || true'
+
+# Starts up a new tmux session as per normal favoured config
+alias tmx='tmux-up ~/.tmux/std.conf'
+
 ###############################################################################
 # Git aliases
 # - These are cut-down from the "oh-my-zsh" aliases file

@@ -114,8 +114,19 @@ function! myspacevim#after() abort
   " }}}
  
   " Markdown Settings: {{{
-    " TODO the following doesn't work and opens (always) in Firefox
-    let g:mkdp_browser = '/usr/bin/surf'
+  " See: https://github.com/iamcco/markdown-preview.vim
+  " Note: this will change to, https://github.com/iamcco/markdown-preview.nvim
+    " for normal mode
+    nmap <silent> <F8> <Plug>MarkdownPreview
+    " for insert mode
+    imap <silent> <F8> <Plug>MarkdownPreview
+    " for normal mode
+    nmap <silent> <F9> <Plug>StopMarkdownPreview
+    " for insert mode
+    imap <silent> <F9> <Plug>StopMarkdownPreview
+    " the browser to use - currently suckless surf for better independent
+    " window management
+    let g:mkdp_browser = 'surf'
   " }}}
 
 endfunction

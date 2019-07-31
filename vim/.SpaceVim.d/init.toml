@@ -14,14 +14,14 @@
 # The following is an alternative (light) RLS plugin set
 # Works okay and doesn't get in the way, but isn't full featured.
 # The Spacevim built-in layer often fails - see below
-[[custom_plugins]]
-  name = 'prabirshrestha/async.vim'
-[[custom_plugins]]
-  name = 'prabirshrestha/vim-lsp'
-[[custom_plugins]]
-  name = 'prabirshrestha/asyncomplete.vim'
-[[custom_plugins]]
-  name = 'prabirshrestha/asyncomplete-lsp.vim'
+# [[custom_plugins]]
+  # name = 'prabirshrestha/async.vim'
+# [[custom_plugins]]
+  # name = 'prabirshrestha/vim-lsp'
+# [[custom_plugins]]
+  # name = 'prabirshrestha/asyncomplete.vim'
+# [[custom_plugins]]
+  # name = 'prabirshrestha/asyncomplete-lsp.vim'
 
 # All SpaceVim option below [option] section
 [options]
@@ -95,13 +95,13 @@
 #   it frequently errors (full screen) and crashes
 [[layers]]
   name = "lsp"
-  enable = false
+  enable = true
   filetypes = [
-    # "rust",
+    "rust",
     "javascript",
     "typescript"
   ]
-  # [layers.override_cmd]
-    # rust = ["rustup", "run", "stable", "rls"]
+  [layers.override_cmd]
+    rust = ["rustup", "run", "stable", "rls"]
   [layers.override_cmd]
     typescript = ['javascript-typescript-stdio']
