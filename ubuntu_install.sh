@@ -19,7 +19,7 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 # Etcher
 sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61 && sudo sh -c "echo 'deb https://dl.bintray.com/resin-io/debian stable etcher' > /etc/apt/sources.list.d/resin-io-etcher.list";
 # Wireguard
-sudo add-apt-repository ppa:wireguard/wireguard;
+sudo add-apt-repository --yes --update ppa:wireguard/wireguard;
 # FIXME Shadowsocks 
 # sudo apt install libqrencode libappindicator1 libqtshadowsocks libzbar qtbase5;
 # Brave browser
@@ -29,7 +29,7 @@ echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ ${UBUNTU_
 # Ansible
 sudo apt-add-repository --yes --update ppa:ansible/ansible;
 # Install NeoVim from ppa as the Debian repo is very old
-sudo add-apt-repository ppa:neovim-ppa/stable;
+sudo add-apt-repository --yes --update ppa:neovim-ppa/stable;
 ###############################################################################
 # Start the package installs
 ###############################################################################
